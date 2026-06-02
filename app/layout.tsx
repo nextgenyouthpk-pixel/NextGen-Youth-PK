@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 import { Mail, MapPin, ArrowRight, ChevronRight } from "lucide-react";
 
@@ -45,11 +46,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             
             {/* Minimal & Professional Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <img 
-                src="/logo.jpg" 
-                alt="NextGen Youth PK Logo" 
-                className="h-10 md:h-12 w-auto object-contain rounded-md transition-transform duration-500 group-hover:scale-105" 
-              />
+              <div className="relative h-10 md:h-12 w-24 md:w-28 flex items-center">
+                <Image 
+                  src="/logo.jpg" 
+                  alt="NextGen Youth PK Logo" 
+                  width={120}
+                  height={48}
+                  priority
+                  className="object-contain rounded-md transition-transform duration-500 group-hover:scale-105" 
+                />
+              </div>
               <span className="hidden sm:flex flex-col justify-center border-l-2 border-slate-200 pl-3">
                 <span className="font-black text-lg tracking-tight text-slate-900 leading-none">NextGen</span>
                 <span className="font-bold text-[0.65rem] tracking-widest text-[#00b4d8] uppercase mt-1">Youth PK</span>
@@ -76,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
             </nav>
 
-            {/* Clean CTA Button replacing AI Directors Lab */}
+            {/* Clean CTA Button */}
             <Link href="/Collaboration" className="hidden sm:flex bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#00b4d8] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 items-center gap-2 group">
               Partner With Us
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -84,10 +90,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        {/* DYNAMIC PAGE CONTENT */}
-        <main className="min-h-screen pt-24">
+        {/* DYNAMIC PAGE CONTENT - Fixed nested <main> issue by changing to a div wrapper */}
+        <div className="min-h-screen pt-24">
           {children}
-        </main>
+        </div>
 
         {/* DEEP PREMIUM DARK FOOTER */}
         <footer className="bg-[#030712] pt-24 pb-10 mt-20 relative overflow-hidden text-white border-t border-slate-800">
@@ -98,10 +104,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-[90rem] mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20 relative z-10">
               
-              {/* Brand Column (Spans 4 columns) */}
+              {/* Brand Column */}
               <div className="lg:col-span-4 space-y-6">
                 <Link href="/" className="inline-flex items-center gap-3 group">
-                  <img src="/logo.jpg" alt="Logo" className="h-12 w-auto object-contain rounded-md transition-transform duration-500 group-hover:scale-105" />
+                  <Image 
+                    src="/logo.jpg" 
+                    alt="Logo" 
+                    width={48} 
+                    height={48} 
+                    className="object-contain rounded-md transition-transform duration-500 group-hover:scale-105" 
+                  />
                   <span className="flex flex-col justify-center border-l border-slate-700 pl-3">
                     <span className="font-black text-xl tracking-tight text-white leading-none">NextGen</span>
                     <span className="font-bold text-[0.65rem] tracking-widest text-[#00b4d8] uppercase mt-1">Youth PK</span>
@@ -112,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </p>
               </div>
 
-              {/* Quick Links Column (Spans 2 columns) */}
+              {/* Quick Links Column */}
               <div className="lg:col-span-2">
                 <h4 className="text-white font-bold mb-6 text-sm tracking-widest uppercase text-slate-300">Explore</h4>
                 <ul className="space-y-4 text-slate-400 text-sm font-medium">
@@ -123,7 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ul>
               </div>
 
-              {/* Contact Column (Spans 3 columns) */}
+              {/* Contact Column */}
               <div className="lg:col-span-3">
                 <h4 className="text-white font-bold mb-6 text-sm tracking-widest uppercase text-slate-300">Reach Out</h4>
                 <ul className="space-y-6 text-slate-400 text-sm">
@@ -148,17 +160,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </ul>
               </div>
 
-              {/* Socials & Collab Column (Spans 3 columns) */}
+              {/* Socials & Collab Column */}
               <div className="lg:col-span-3">
                 <h4 className="text-white font-bold mb-6 text-sm tracking-widest uppercase text-slate-300">Connect</h4>
                 <div className="flex gap-3 mb-8">
-                  <a href="https://www.instagram.com/nextgenyouthpk?igsh=MXE0dHJ6ZXlwZ2JuYQ==" target="_blank" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-500 hover:border-transparent transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                  <a href="https://www.instagram.com/nextgenyouthpk?igsh=MXE0dHJ6ZXlwZ2JuYQ==" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-500 hover:border-transparent transition-all duration-300 hover:-translate-y-1 shadow-sm">
                     <InstagramIcon />
                   </a>
-                  <a href="https://www.linkedin.com/company/nextgen-youth-pk/" target="_blank" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                  <a href="https://www.linkedin.com/company/nextgen-youth-pk/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all duration-300 hover:-translate-y-1 shadow-sm">
                     <LinkedinIcon />
                   </a>
-                  <a href="https://www.facebook.com/share/1Es2eaDfsp/" target="_blank" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300 hover:-translate-y-1 shadow-sm">
+                  <a href="https://www.facebook.com/share/1Es2eaDfsp/" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300 hover:-translate-y-1 shadow-sm">
                     <FacebookIcon />
                   </a>
                 </div>

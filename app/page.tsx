@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, animate, useInView } from "framer-motion";
+import { motion, animate, useInView, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -46,12 +46,12 @@ export default function Home() {
   const [activeFAQ, setActiveFAQ] = useState<number | null>(0);
   const [proposalStatus, setProposalStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
