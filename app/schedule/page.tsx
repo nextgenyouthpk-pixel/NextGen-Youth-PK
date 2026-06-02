@@ -6,10 +6,11 @@ import Image from "next/image";
 import { CalendarDays, ArrowLeft, Download } from "lucide-react";
 
 export default function SchedulePage() {
+  // Fixed TypeScript error by adding 'as const'
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  } as const;
 
   return (
     // ✅ Semantic HTML: changed div to main for SEO
