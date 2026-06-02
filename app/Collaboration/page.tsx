@@ -8,10 +8,11 @@ export default function CollaborationPage() {
   // ✅ Upgraded to handle real API states (loading, success, error)
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
+  // Fixed TypeScript error by adding 'as const'
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
+  } as const;
 
   const stagger = {
     hidden: { opacity: 0 },
@@ -220,7 +221,7 @@ export default function CollaborationPage() {
                   </div>
                 )}
 
-                <p className="text-[10px] md:text-xs text-center text-slate-400 mt-4">Your information is secure. We never share your data with third parties.</p>
+                <p className="text-slate-400 text-center text-[10px] md:text-xs mt-4">Your information is secure. We never share your data with third parties.</p>
               </form>
             </div>
           </motion.div>
